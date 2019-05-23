@@ -39,11 +39,11 @@ import (
 client := coinbasepro.NewClient()
 
 // optional, configuration can be updated with ClientConfig
-client.UpdateConfig(coinbasepro.ClientConfig{
+client.UpdateConfig(&coinbasepro.ClientConfig{
   BaseURL: "https://api.pro.coinbase.com",
   Key: "coinbase pro key",
   Passphrase: "coinbase pro passphrase",
-  Secret "coinbase pro secret",
+  Secret: "coinbase pro secret",
 })
 ```
 
@@ -268,8 +268,8 @@ Get Trade history:
 
   for cursor.HasMore {
     if err := cursor.NextPage(&trades); err != nil {
-      for _, t := range trades {
-        println(trade.CoinbaseID)
+      for _, trade := range trades {
+        println(trade.TradeID)
       }
     }
   }
